@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Calculator | SDG 13</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <style>
+        :root {
+            --primary-color: #3a7d44; /* Warna hijau SDG 13 */
+            --secondary-color: #ffd700;
+        }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .hero-section {
+            background: linear-gradien rgba(0, 0, 0, 0.6), url('https://images.unsplash.com/photo-1615751072497-5f5169febe17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--primary-color);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-water mr-2"></i>SDG 14
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quiz.html">Sustainability Quiz</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="calculator.html">Carbon Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Carbon Footprint Calculator</h2>
+                        <p class="text-muted text-center">Calculate your carbon footprint and its impact on marine ecosystems.</p>
+                        
+                        <form id="calcForm">
+                            <!-- Transportasi -->
+                            <div class="form-group">
+                              <label for="transport">
+                                  <i class="fas fa-car mr-2"></i>Transportation (km/day):
+                                  <i class="fas fa-info-circle info-icon ml-2" title="Average distance you travel daily by vehicle"></i>
+                              </label>
+                              <input type="number" class="form-control" id="transport" placeholder="e.g., 10">
+                            </div>
+                          
+                            <!-- Listrik -->
+                            <div class="form-group">
+                              <label for="electricity">
+                                  <i class="fas fa-bolt mr-2"></i>Electricity (kWh/day):
+                                  <i class="fas fa-info-circle info-icon ml-2" title="Average electricity consumption per day"></i>
+                              </label>
+                              <input type="number" class="form-control" id="electricity" placeholder="e.g., 5">
+                            </div>
+                          
+                            <!-- Makanan -->
+                            <div class="form-group">
+                              <label for="food">
+                                  <i class="fas fa-utensils mr-2"></i>Food Consumption (meat portions/day):
+                                  <i class="fas fa-info-circle info-icon ml-2" title="Number of meat-based meals per day"></i>
+                              </label>
+                              <input type="number" class="form-control" id="food" placeholder="e.g., 2">
+                            </div>
+                          
+                            <!-- Air -->
+                            <div class="form-group">
+                              <label for="water">
+                                  <i class="fas fa-tint mr-2"></i>Water Usage (liters/day):
+                                  <i class="fas fa-info-circle info-icon ml-2" title="Total water consumption per day"></i>
+                              </label>
+                              <input type="number" class="form-control" id="water" placeholder="e.g., 100">
+                            </div>
+                          
+                            <button type="submit" class="btn btn-primary btn-block mt-4">
+                                <i class="fas fa-calculator mr-2"></i>Calculate Footprint
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="calcResult" class="card result-card mt-4 d-none">
+                    <div class="card-body">
+                        <h3 class="card-title">Your Carbon Footprint</h3>
+                        <div id="resultContent"></div>
+                        <div class="mt-3">
+                            <h5>Tips to Reduce Your Impact:</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success mr-2"></i>Use public transportation or carpool</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success mr-2"></i>Switch to energy-efficient appliances</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success mr-2"></i>Reduce meat consumption</li>
+                                <li class="list-group-item"><i class="fas fa-check-circle text-success mr-2"></i>Fix leaks and reduce water waste</li>
+                            </ul>
+                        </div>
+                        <a href="history.html" class="btn btn-outline-primary mt-3">
+                            <i class="fas fa-history mr-2"></i>View History
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('calcForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get values from form
+            const transport = parseFloat(document.getElementById('transport').value) || 0;
+            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+            const food = parseFloat(document.getElementById('food').value) || 0;
+            const water = parseFloat(document.getElementById('water').value) || 0;
+            
+            // Calculate carbon footprint (simplified calculation)
+            const transportEmission = transport * 0.0002;
+            const electricityEmission = electricity * 0.00085;
+            const foodEmission = food * 0.01;
+            const waterEmission = water * 0.0001;
+            
+            const totalEmission = transportEmission + electricityEmission + foodEmission + waterEmission;
+            
+            // Determine impact level
+            let impactLevel = '';
+            let impactClass = '';
+            if (totalEmission < 0.5) {
+                impactLevel = 'Low Impact';
+                impactClass = 'text-success';
+            } else if (totalEmission < 1.0) {
+                impactLevel = 'Moderate Impact';
+                impactClass = 'text-warning';
+            } else {
+                impactLevel = 'High Impact';
+                impactClass = 'text-danger';
+            }
+            
+            // Save to history
+            const calcHistory = JSON.parse(localStorage.getItem('calcHistory')) || [];
+            const result = {
+                date: new Date().toLocaleDateString(),
+                emission: totalEmission.toFixed(4),
+                impact: impactLevel,
+                transport,
+                electricity,
+                food,
+                water
+            };
+            calcHistory.push(result);
+            localStorage.setItem('calcHistory', JSON.stringify(calcHistory));
+            
+            // Display results
+            document.getElementById('resultContent').innerHTML = `
+                <div class="alert alert-info">
+                    <h4 class="alert-heading">Daily Carbon Footprint: ${totalEmission.toFixed(4)} tons CO₂</h4>
+                    <p>Impact Level: <span class="${impactClass} font-weight-bold">${impactLevel}</span></p>
+                    <hr>
+                    <p class="mb-0">This result has been saved to your history.</p>
+                </div>
+                <div class="row text-center mt-3">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Transport</h6>
+                                <h4 class="${transportEmission > 0.1 ? 'text-danger' : 'text-success'}">${transportEmission.toFixed(4)}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Electricity</h6>
+                                <h4 class="${electricityEmission > 0.1 ? 'text-danger' : 'text-success'}">${electricityEmission.toFixed(4)}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Food</h6>
+                                <h4 class="${foodEmission > 0.1 ? 'text-danger' : 'text-success'}">${foodEmission.toFixed(4)}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Water</h6>
+                                <h4 class="${waterEmission > 0.1 ? 'text-danger' : 'text-success'}">${waterEmission.toFixed(4)}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('calcResult').classList.remove('d-none');
+            
+            // Scroll to results
+            document.getElementById('calcResult').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Initialize tooltips
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        // Cek apakah dalam mode update
+        const urlParams = new URLSearchParams(window.location.search);
+        const isUpdateMode = urlParams.get('update') === 'true';
+
+        if (isUpdateMode) {
+            const dataToUpdate = JSON.parse(sessionStorage.getItem('dataToUpdate'));
+            
+            if (dataToUpdate) {
+                // Isi form dengan data lama
+                document.getElementById('transport').value = dataToUpdate.transport || '';
+                document.getElementById('electricity').value = dataToUpdate.electricity || '';
+                document.getElementById('food').value = dataToUpdate.food || '';
+                document.getElementById('water').value = dataToUpdate.water || '';
+                
+                // Ubah teks tombol submit
+                document.querySelector('#calcForm button[type="submit"]').textContent = 'Update Calculation';
+                
+                // Handle form submit untuk update
+                document.getElementById('calcForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const calcHistory = JSON.parse(localStorage.getItem('calcHistory')) || [];
+                    
+                    // Update data yang ada
+                    calcHistory[dataToUpdate.index] = {
+                        date: new Date().toLocaleDateString(),
+                        emission: totalEmission.toFixed(4),
+                        impact: impactLevel,
+                        transport: parseFloat(document.getElementById('transport').value) || 0,
+                        electricity: parseFloat(document.getElementById('electricity').value) || 0,
+                        food: parseFloat(document.getElementById('food').value) || 0,
+                        water: parseFloat(document.getElementById('water').value) || 0
+                    };
+                    
+                    localStorage.setItem('calcHistory', JSON.stringify(calcHistory));
+                    sessionStorage.removeItem('dataToUpdate');
+                    
+                    alert('Data updated successfully!');
+                    window.location.href = 'history.html';
+                });
+            }
+        }
+    </script>
+</body>
+</html>

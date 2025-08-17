@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Quiz | SDG 13</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background-color: #0077b6 !important;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-title {
+            color: #0077b6;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #0077b6;
+            border-color: #0077b6;
+        }
+        .result-card {
+            border-left: 5px solid #0077b6;
+        }
+    </style> -->
+
+        <style>
+        :root {
+            --primary-color: #3a7d44; /* Warna hijau SDG 13 */
+            --secondary-color: #ffd700;
+        }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .hero-section {
+            background: linear-gradien rgba(0, 0, 0, 0.6), url('https://images.unsplash.com/photo-1615751072497-5f5169febe17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--primary-color);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-fire mr-2"></i>SDG 13
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quiz.html">Climate Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="calculator.html">Footprint Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Sustainability Quiz</h2>
+                        <p class="text-muted text-center">Answer these questions to assess your sustainable lifestyle habits.</p>
+                        
+                        <form id="quizForm">
+                            <!-- Transportasi -->
+                            <div class="form-group">
+                              <label for="transportasi"><i class="fas fa-car mr-2"></i>How do you usually travel to work or school?</label>
+                              <select class="form-control" id="transportasi">
+                                <option value="2">Walking or cycling</option>
+                                <option value="1">Public transportation</option>
+                                <option value="0">Private vehicle</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Konsumsi Makanan -->
+                            <div class="form-group">
+                              <label for="makanan"><i class="fas fa-utensils mr-2"></i>When shopping, what is your main priority?</label>
+                              <select class="form-control" id="makanan">
+                                <option value="2">Local and seasonal products</option>
+                                <option value="1">Imported products for more variety</option>
+                                <option value="0">Convenient packaged and fast food</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Pengelolaan Sampah -->
+                            <div class="form-group">
+                              <label for="sampah"><i class="fas fa-trash-alt mr-2"></i>How do you handle household waste?</label>
+                              <select class="form-control" id="sampah">
+                                <option value="2">Sort it for recycling</option>
+                                <option value="1">Collect all waste in one place</option>
+                                <option value="0">Burn waste in the backyard</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Penggunaan Energi -->
+                            <div class="form-group">
+                              <label for="energi"><i class="fas fa-lightbulb mr-2"></i>How do you save electricity at home?</label>
+                              <select class="form-control" id="energi">
+                                <option value="2">Turn off lights and electronics when not in use</option>
+                                <option value="1">Use air conditioning all day</option>
+                                <option value="0">Not too concerned about electricity consumption</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Penggunaan Air -->
+                            <div class="form-group">
+                              <label for="air"><i class="fas fa-tint mr-2"></i>What are your shower habits?</label>
+                              <select class="form-control" id="air">
+                                <option value="2">Use shower and turn off water when soaping</option>
+                                <option value="1">Use water as needed</option>
+                                <option value="0">Take baths in a bathtub</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Pakaian -->
+                            <div class="form-group">
+                              <label for="pakaian"><i class="fas fa-tshirt mr-2"></i>How do you shop for new clothes?</label>
+                              <select class="form-control" id="pakaian">
+                                <option value="2">Buy second-hand or preloved clothes</option>
+                                <option value="1">Buy clothes from eco-friendly brands</option>
+                                <option value="0">Buy from fast fashion brands</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Belanja Harian -->
+                            <div class="form-group">
+                              <label for="belanja"><i class="fas fa-shopping-bag mr-2"></i>What do you bring when shopping at the supermarket?</label>
+                              <select class="form-control" id="belanja">
+                                <option value="2">Reusable shopping bags</option>
+                                <option value="1">Plastic bags from the store</option>
+                                <option value="0">Don't bring any bags</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Hobi dan Kegiatan Luar -->
+                            <div class="form-group">
+                              <label for="hobi"><i class="fas fa-hiking mr-2"></i>What's your favorite outdoor activity?</label>
+                              <select class="form-control" id="hobi">
+                                <option value="2">Planting trees or gardening</option>
+                                <option value="1">Relaxing in city parks</option>
+                                <option value="0">Spending time at the mall</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Barang Elektronik -->
+                            <div class="form-group">
+                              <label for="elektronik"><i class="fas fa-laptop mr-2"></i>What do you do when buying new gadgets?</label>
+                              <select class="form-control" id="elektronik">
+                                <option value="2">Find out about recycling old products</option>
+                                <option value="1">Sell old products to buy new ones</option>
+                                <option value="0">Throw away old products</option>
+                              </select>
+                            </div>
+                          
+                            <!-- Pola Konsumsi -->
+                            <div class="form-group">
+                              <label for="konsumsi"><i class="fas fa-shopping-cart mr-2"></i>What do you do with items you no longer need?</label>
+                              <select class="form-control" id="konsumsi">
+                                <option value="2">Donate or sell them</option>
+                                <option value="1">Store them in the warehouse</option>
+                                <option value="0">Throw them in the trash</option>
+                              </select>
+                            </div>
+                          
+                            <button type="submit" class="btn btn-primary btn-block mt-4">
+                                <i class="fas fa-check-circle mr-2"></i>Submit Answers
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="quizResult" class="card result-card mt-4 d-none">
+                    <div class="card-body">
+                        <h3 class="card-title">Your Results</h3>
+                        <div id="resultContent"></div>
+                        <a href="history.html" class="btn btn-outline-primary mt-3">
+                            <i class="fas fa-history mr-2"></i>View History
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fields = ['transportasi', 'makanan', 'sampah', 'energi', 'air', 'pakaian', 'belanja', 'hobi', 'elektronik', 'konsumsi'];
+            let score = 0;
+
+            fields.forEach(id => {
+                score += parseInt(document.getElementById(id).value);
+            });
+
+            let message = '';
+            let resultClass = '';
+            if (score >= 16) {
+                message = '🌟 Excellent! Your lifestyle is very sustainable. Keep up the good work for our oceans!';
+                resultClass = 'alert-success';
+            } else if (score >= 10) {
+                message = '👍 Good job! You care about the environment but there\'s still room for improvement.';
+                resultClass = 'alert-info';
+            } else {
+                message = '⚠️ Let\'s make some changes! Small adjustments can make a big difference for marine life.';
+                resultClass = 'alert-warning';
+            }
+
+            const result = {
+                date: new Date().toLocaleDateString(),
+                score,
+                message,
+                maxScore: 20
+            };
+
+            // Save to localStorage
+            const quizHistory = JSON.parse(localStorage.getItem('quizHistory')) || [];
+            quizHistory.push(result);
+            localStorage.setItem('quizHistory', JSON.stringify(quizHistory));
+
+            // Display results
+            document.getElementById('resultContent').innerHTML = `
+                <div class="alert ${resultClass}">
+                    <h4 class="alert-heading">Your Score: ${score}/20</h4>
+                    <p>${message}</p>
+                    <hr>
+                    <p class="mb-0">This result has been saved to your history.</p>
+                </div>
+            `;
+            document.getElementById('quizResult').classList.remove('d-none');
+            
+            // Scroll to results
+            document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

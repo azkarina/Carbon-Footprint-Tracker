@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 13: Climate Action | Carbon Footprint Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3a7d44; /* Warna hijau SDG 13 */
+            --secondary-color: #ffd700;
+        }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .hero-section {
+            background: linear-gradien rgba(0, 0, 0, 0.6), url('https://images.unsplash.com/photo-1615751072497-5f5169febe17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--primary-color);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-fire mr-2"></i>SDG 13
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quiz.html">Climate Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="calculator.html">Footprint Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container">
+        <div class="hero-section text-center">
+            <h1 class="display-4">Take Climate Action</h1>
+            <p class="lead">Reduce your carbon footprint and fight climate change</p>
+            <a href="calculator.html" class="btn btn-light btn-lg mt-3">
+                <i class="fas fa-calculator mr-2"></i>Calculate Your Footprint
+            </a>
+        </div>
+
+        <!-- Features -->
+        <div class="row text-center mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>Climate Quiz</h3>
+                <p>Test your knowledge about sustainable practices to reduce emissions.</p>
+                <a href="quiz.html" class="btn btn-outline-primary">Start Quiz</a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h3>Carbon Calculator</h3>
+                <p>Measure your personal impact on climate change.</p>
+                <a href="calculator.html" class="btn btn-outline-primary">Calculate Now</a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Track Progress</h3>
+                <p>Monitor your improvements over time.</p>
+                <a href="history.html" class="btn btn-outline-primary">View History</a>
+            </div>
+        </div>
+
+        <!-- About SDG 13 -->
+        <div class="card mb-5">
+            <div class="card-body">
+                <h2 class="card-title"><i class="fas fa-info-circle mr-2"></i>About SDG 13</h2>
+                <p class="card-text">
+                    Sustainable Development Goal 13 aims to <strong>take urgent action to combat climate change and its impacts</strong>. 
+                    Human activities are estimated to have caused approximately 1.0°C of global warming above pre-industrial levels.
+                </p>
+                <div class="alert alert-info">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <strong>Did you know?</strong> The carbon footprint of the average person is about 4 tons per year. 
+                    To avoid a 2℃ rise in global temperatures, we need to reduce this to under 2 tons by 2050.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2023 SDG 13 Climate Action Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
